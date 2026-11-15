@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "title": "Filter bubbles and explainable recommendation: paraphrase notes",
+    "note": "Every passage is a paraphrase note written for this project, not a verbatim quotation. Do not cite these passages as if they were the authors' exact words.",
+    "built": "2026-11-15",
+    "language": "en + zh",
+    "aliases_note": "Registered names for each source. A question that names one of them gets that source's notes boosted; see litlens/retrieval.py.",
+    "aliases": {
+      "pariser2011": ["Pariser", "filter bubble", "信息茧房", "茧房"],
+      "tintarev2015": ["Tintarev", "Masthoff"],
+      "bostandjiev2012": ["TasteWeights", "Bostandjiev", "O'Donovan"],
+      "he2016": ["Parra", "Verbert", "交互式推荐系统"],
+      "ekstrand2014": ["Ekstrand"],
+      "leessee2004": ["Lee and See"],
+      "amershi2019": ["Amershi"],
+      "norman1988": ["Norman"],
+      "shneiderman1983": ["Shneiderman", "direct manipulation", "直接操作"],
+      "nielsen1994": ["Nielsen"],
+      "horvitz1999": ["Horvitz", "mixed-initiative", "混合主动"],
+      "lewis2020": ["Lewis", "retrieval-augmented", "检索增强"]
+    }
+  },
+  "passages": [
+    {
+      "id": "p01",
+      "source_key": "pariser2011",
+      "source": "Pariser, E. (2011). The Filter Bubble: What the Internet Is Hiding from You. Penguin Press.",
+      "year": 2011,
+      "type": "paraphrase-note",
+      "tags": ["filter-bubble", "personalisation", "transparency"],
+      "en": "Personalised filters decide what we see before we see it. Because the ranking is invisible, users cannot tell that their view of the world has been narrowed; Pariser calls this the filter bubble.",
+      "zh": "个性化过滤在我们看到内容之前就已经替我们做了选择。由于排序规则不可见，用户察觉不到自己的视野正在变窄，Pariser 称之为「信息茧房」。"
+    },
+    {
+      "id": "p02",
+      "source_key": "pariser2011",
+      "source": "Pariser, E. (2011). The Filter Bubble: What the Internet Is Hiding from You. Penguin Press.",
+      "year": 2011,
+      "type": "paraphrase-note",
+      "tags": ["filter-bubble", "user-control"],
+      "en": "Pariser argues that escaping the bubble needs two things from the platform: visibility of the filtering rules, and controls that let the user adjust the balance between comfortable and challenging content.",
+      "zh": "Pariser 认为走出茧房需要平台提供两件事：让过滤规则可见，以及让用户能调节「舒适内容」与「挑战性内容」之间的比例。"
+    },
+    {
+      "id": "p03",
+      "source_key": "tintarev2015",
+      "source": "Tintarev, N., & Masthoff, J. (2015). Explaining recommendations: Design and evaluation. In Recommender Systems Handbook (pp. 353-382). Springer.",
+      "year": 2015,
+      "type": "paraphrase-note",
+      "tags": ["explanation", "transparency", "trust"],
+      "en": "Tintarev and Masthoff group the goals of a recommendation explanation into transparency, scrutability, trust, effectiveness, persuasiveness, efficiency and satisfaction. A single explanation rarely serves all seven at once.",
+      "zh": "Tintarev 与 Masthoff 把推荐解释的目标归为七类：透明性、可审查性、信任、有效性、说服力、效率与满意度。同一条解释很少能同时满足这七个目标。"
+    },
+    {
+      "id": "p04",
+      "source_key": "tintarev2015",
+      "source": "Tintarev, N., & Masthoff, J. (2015). Explaining recommendations: Design and evaluation. In Recommender Systems Handbook (pp. 353-382). Springer.",
+      "year": 2015,
+      "type": "paraphrase-note",
+      "tags": ["explanation", "one-way"],
+      "en": "Most explanation work is one-directional: the system explains why an item was recommended, and the user reads it. Explanations inform the user but usually do not let the user change the algorithm's behaviour.",
+      "zh": "多数解释研究是单向的：系统说明为什么推荐某条内容，用户只能阅读。解释让用户知情，但通常不允许用户改变算法的行为。"
+    },
+    {
+      "id": "p05",
+      "source_key": "bostandjiev2012",
+      "source": "Bostandjiev, S., O'Donovan, J., & Hollerer, T. (2012). TasteWeights: A visual interactive hybrid recommender system. RecSys '12, 35-42.",
+      "year": 2012,
+      "type": "paraphrase-note",
+      "tags": ["interactive-interface", "weights", "direct-manipulation"],
+      "en": "TasteWeights is an interactive hybrid recommender. Users see the weights of features and social connections, drag them, and the recommendation list updates immediately, so the model's reasoning becomes something they can manipulate.",
+      "zh": "TasteWeights 是一个可视化混合推荐器。用户能看到特征与社交关系的权重、直接拖动它们，推荐列表随即更新，模型的推理过程因此变成可操作的对象。"
+    },
+    {
+      "id": "p06",
+      "source_key": "bostandjiev2012",
+      "source": "Bostandjiev, S., O'Donovan, J., & Hollerer, T. (2012). TasteWeights: A visual interactive hybrid recommender system. RecSys '12, 35-42.",
+      "year": 2012,
+      "type": "paraphrase-note",
+      "tags": ["user-control", "mixed-initiative"],
+      "en": "In TasteWeights the user stays the final decision maker: the system suggests, the user inspects and edits the weights, and control can be handed back at any point.",
+      "zh": "在 TasteWeights 中，用户始终是最终决策者：系统给出建议，用户查看并修改权重，并且随时可以把控制权收回。"
+    },
+    {
+      "id": "p07",
+      "source_key": "he2016",
+      "source": "He, C., Parra, D., & Verbert, K. (2016). Interactive recommender systems: A survey. Expert Systems with Applications, 56, 9-27.",
+      "year": 2016,
+      "type": "paraphrase-note",
+      "tags": ["survey", "interaction-patterns"],
+      "en": "He, Parra and Verbert survey interactive recommender systems and classify them by how the user takes part: visualisation of the item space, critiquing of recommendations, and direct editing of preference models.",
+      "zh": "He、Parra 与 Verbert 综述了交互式推荐系统，并按用户参与方式分类：可视化物品空间、对推荐结果做评价式修正、直接编辑偏好模型。"
+    },
+    {
+      "id": "p08",
+      "source_key": "he2016",
+      "source": "He, C., Parra, D., & Verbert, K. (2016). Interactive recommender systems: A survey. Expert Systems with Applications, 56, 9-27.",
+      "year": 2016,
+      "type": "paraphrase-note",
+      "tags": ["cognitive-load", "evaluation"],
+      "en": "The same survey warns that exposing many parameters at once causes cognitive overload, and that interactive recommenders are hard to evaluate because the user's behaviour changes the system under test.",
+      "zh": "该综述同时警告：一次暴露过多参数会造成认知过载；而且交互式推荐器难以评估，因为用户的行为会改变被测系统本身。"
+    },
+    {
+      "id": "p09",
+      "source_key": "ekstrand2014",
+      "source": "Ekstrand, M. D., Harper, F. M., Willemsen, M. C., & Konstan, J. A. (2014). User perception of differences in recommender algorithms. RecSys '14, 161-168.",
+      "year": 2014,
+      "type": "paraphrase-note",
+      "tags": ["user-perception", "transparency"],
+      "en": "Ekstrand and colleagues found that users are poor at telling recommender algorithms apart. Differences between algorithms are often invisible in the interface, so users form impressions from interface cues rather than from the algorithm.",
+      "zh": "Ekstrand 等人发现，用户很难分辨不同推荐算法之间的差异。算法差异在界面上往往不可见，用户的印象更多来自界面线索而非算法本身。"
+    },
+    {
+      "id": "p10",
+      "source_key": "leessee2004",
+      "source": "Lee, J. D., & See, K. A. (2004). Trust in automation: Designing for appropriate reliance. Human Factors, 46(1), 50-80.",
+      "year": 2004,
+      "type": "paraphrase-note",
+      "tags": ["trust", "reliance", "calibration"],
+      "en": "Lee and See describe trust as an attitude that should be calibrated: over-trust leads to over-reliance and missed errors, under-trust leads to disuse. Good design supports appropriate reliance rather than maximum trust.",
+      "zh": "Lee 与 See 把信任视为一种需要校准的态度：过度信任导致盲目依赖并错过错误，信任不足则导致弃用。好的设计追求「恰当依赖」，而非最大化信任。"
+    },
+    {
+      "id": "p11",
+      "source_key": "amershi2019",
+      "source": "Amershi, S., et al. (2019). Guidelines for human-AI interaction. CHI '19, 1-13.",
+      "year": 2019,
+      "type": "paraphrase-note",
+      "tags": ["guidelines", "uncertainty"],
+      "en": "Amershi and colleagues set out 18 guidelines for human-AI interaction, grouped by when they apply: initially, during interaction, when the system is wrong, and over time. One guideline is to scope the service when in doubt.",
+      "zh": "Amershi 等人提出了 18 条人机交互准则，按适用时点分为四组：初次接触、交互过程中、系统出错时、长期使用。其中一条是「存疑时缩小服务范围」。"
+    },
+    {
+      "id": "p12",
+      "source_key": "amershi2019",
+      "source": "Amershi, S., et al. (2019). Guidelines for human-AI interaction. CHI '19, 1-13.",
+      "year": 2019,
+      "type": "paraphrase-note",
+      "tags": ["guidelines", "error-recovery"],
+      "en": "Other guidelines ask the system to make clear what it can do, support efficient correction, explain why it did what it did, and notify users when its behaviour changes. Together they treat error recovery as part of the interaction, not an afterthought.",
+      "zh": "其余准则要求系统说明自己能做什么、支持高效纠正、解释行为原因，并在行为变化时通知用户。这些准则把「纠错」当作交互的一部分，而不是事后补救。"
+    },
+    {
+      "id": "p13",
+      "source_key": "norman1988",
+      "source": "Norman, D. A. (1988). The Design of Everyday Things. Basic Books.",
+      "year": 1988,
+      "type": "paraphrase-note",
+      "tags": ["gulf-of-execution", "gulf-of-evaluation", "feedback"],
+      "en": "Norman's seven-stage model separates the gulf of execution (can I work out what to do?) from the gulf of evaluation (can I tell what happened?). Interfaces should narrow both, not just the first.",
+      "zh": "Norman 的七阶段模型区分了执行沟壑（我能否想出该怎么做）与评估沟壑（我能否看出发生了什么）。界面应当同时缩小这两道沟壑，而不只是前者。"
+    },
+    {
+      "id": "p14",
+      "source_key": "shneiderman1983",
+      "source": "Shneiderman, B. (1983). Direct manipulation: A step beyond programming languages. IEEE Transactions on Computers, 32(8), 57-69.",
+      "year": 1983,
+      "type": "paraphrase-note",
+      "tags": ["direct-manipulation", "sliders"],
+      "en": "Direct manipulation, as Shneiderman defined it, has three properties: continuous representation of the objects, physical actions instead of typed commands, and rapid, incremental, reversible operations whose effect is immediately visible.",
+      "zh": "Shneiderman 定义的直接操作有三个特征：对象的连续表示、用物理动作代替键入命令、以及效果立即可见的快速可逆增量操作。"
+    },
+    {
+      "id": "p15",
+      "source_key": "nielsen1994",
+      "source": "Nielsen, J. (1994). Heuristic evaluation. In Usability Inspection Methods. Wiley.",
+      "year": 1994,
+      "type": "paraphrase-note",
+      "tags": ["heuristics", "visibility", "user-control"],
+      "en": "Nielsen's heuristics include visibility of system status, user control and freedom, error prevention, and helping users recognise, diagnose and recover from errors. Each assumes the user can see the state of the system while acting.",
+      "zh": "Nielsen 的启发式包括：系统状态可见、用户控制与自由、错误预防，以及帮助用户识别、诊断并从错误中恢复。这些都以「用户行动时能看到系统状态」为前提。"
+    },
+    {
+      "id": "p16",
+      "source_key": "horvitz1999",
+      "source": "Horvitz, E. (1999). Principles of mixed-initiative user interfaces. CHI '99, 159-166.",
+      "year": 1999,
+      "type": "paraphrase-note",
+      "tags": ["mixed-initiative", "uncertainty"],
+      "en": "Horvitz's mixed-initiative principles ask designers to weigh the user's uncertainty, the cost of a wrong action and the cost of interrupting, and to let initiative pass between human and system rather than fixing it once.",
+      "zh": "Horvitz 的混合主动原则要求设计者权衡用户的不确定性、错误动作的代价与打扰用户的代价，并让主动权在人机之间流转，而不是一次固定。"
+    },
+    {
+      "id": "p17",
+      "source_key": "lewis2020",
+      "source": "Lewis, P., et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. NeurIPS '20.",
+      "year": 2020,
+      "type": "paraphrase-note",
+      "tags": ["retrieval", "grounding", "hallucination"],
+      "en": "Retrieval-augmented generation grounds an answer in passages retrieved for the question. It reduces fabrication, but the quality of the answer is bounded by retrieval: if the right passage is not retrieved, the model has nothing reliable to cite.",
+      "zh": "检索增强生成把回答建立在为问题检索到的段落之上。它能减少编造，但回答质量受检索制约：如果没检索到对的段落，模型就没有可靠内容可引用。"
+    }
+  ]
+}
