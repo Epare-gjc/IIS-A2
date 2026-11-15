@@ -27,11 +27,11 @@ st.markdown(
 )
 
 EXAMPLES = [
-    "什么是信息茧房？",
-    "TasteWeights 让用户调整什么？",
-    "用户的信任应该如何校准？",
+    "What is a filter bubble?",
+    "What can users adjust in TasteWeights?",
+    "How should a user's trust be calibrated?",
     "How many guidelines does Amershi propose for human-AI interaction?",
-    "今天北京天气怎么样？",
+    "What is the weather in Beijing today?",
 ]
 
 
@@ -47,7 +47,6 @@ def compact(hits: list[dict]) -> list[dict]:
                 "source": raw["source"],
                 "year": raw["year"],
                 "en": raw["en"],
-                "zh": raw["zh"],
             }
         )
     return out
@@ -60,8 +59,7 @@ def evidence_panel(turn: dict) -> None:
     )
     for i, hit in enumerate(turn["hits"], start=1):
         with st.expander(f"[S{i}] {hit['source']} — score {hit['score']:.3f}"):
-            st.markdown(f"**EN** · {hit['en']}")
-            st.markdown(f"**ZH** · {hit['zh']}")
+            st.markdown(hit["en"])
             st.caption(
                 "Paraphrase note written for this project, not a quotation. "
                 f"Passage id {hit['id']}."
@@ -230,7 +228,7 @@ st.caption(
 with st.expander("How an answer is produced", expanded=not st.session_state["history"]):
     st.markdown(
         "1. **Retrieve** — TF-IDF search over 17 paraphrase notes; top 3, "
-        "English and Chinese indexed together.\n"
+        "highest score first.\n"
         "2. **Refuse or continue** — if the best score is below "
         f"`MIN_SCORE = {config.MIN_SCORE:.2f}`, stop before calling the model.\n"
         "3. **Generate** — DeepSeek `deepseek-flash`, thinking mode off, "
@@ -254,6 +252,6 @@ if not st.session_state["history"]:
                 run_turn(example, evidence_only, log)
                 st.rerun()
 
-if question := st.chat_input("Ask a question (English or Chinese)…"):
+if question := st.chat_input("Ask a question…"):
     run_turn(question, evidence_only, log)
     st.rerun()

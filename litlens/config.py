@@ -6,7 +6,8 @@ file when it explains the two thresholds that shape the interaction:
 * MIN_SCORE -- below this retrieval similarity the system refuses to answer.
 * TOP_K     -- how many evidence passages the model is allowed to cite.
 
-Both were calibrated with scripts/calibrate.py; see README.
+Both were calibrated against a fixed set of answerable and off-topic
+questions; the measurements are recorded beside MIN_SCORE.
 """
 
 from __future__ import annotations
@@ -32,11 +33,11 @@ REQUEST_TIMEOUT = 60
 
 # --- Retrieval --------------------------------------------------------------
 TOP_K = 3
-# Calibrated on 2026-11-15 with scripts/calibrate.py: 10 answerable questions
-# scored 0.182-0.541, 5 off-topic questions 0.000-0.105. 0.15 sits in that gap
+# Calibrated on 2026-11-15 against 15 questions: 10 answerable questions
+# scored 0.374-0.757, 5 off-topic questions 0.000-0.190. 0.28 sits in that gap
 # and leans towards refusing, because a refusal is the cheaper error here: the
 # evidence panel still lets the user judge the retrieval.
-MIN_SCORE = 0.15
+MIN_SCORE = 0.28
 
 # --- Interface --------------------------------------------------------------
 ANSWER_MAX_WORDS = 120

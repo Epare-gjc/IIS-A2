@@ -12,7 +12,6 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
-tests/_tmp/
 
 # Editor and tooling scratch
 .idea/

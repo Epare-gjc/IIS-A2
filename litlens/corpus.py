@@ -1,8 +1,8 @@
 """Corpus loading.
 
-The corpus is data/corpus.json: 17 paraphrase notes (English + Chinese) drawn
-from the Assignment 1 reading list plus the design-guideline sources used in
-the report. Every passage is a paraphrase, never a verbatim quotation.
+The corpus is data/corpus.json: 17 paraphrase notes drawn from the
+Assignment 1 reading list plus the design-guideline sources used in the report.
+Every passage is a paraphrase, never a verbatim quotation.
 """
 
 from __future__ import annotations
@@ -14,14 +14,12 @@ from pathlib import Path
 from . import config
 from .retrieval import Index, tokenize
 
-REQUIRED_FIELDS = ("id", "source", "year", "en", "zh")
+REQUIRED_FIELDS = ("id", "source", "year", "en")
 
 
 def passage_text(p: dict) -> str:
-    """Text used for retrieval: both languages plus tags, never the citation."""
-    return " ".join(
-        [p.get("en", ""), p.get("zh", ""), " ".join(p.get("tags", []))]
-    ).strip()
+    """Text used for retrieval: the note plus its tags, never the citation."""
+    return " ".join([p.get("en", ""), " ".join(p.get("tags", []))]).strip()
 
 
 def load_passages(path: Path | None = None) -> list[dict]:

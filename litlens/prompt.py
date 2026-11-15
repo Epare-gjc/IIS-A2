@@ -23,8 +23,7 @@ Rules:
 3. If the passages do not answer the question, reply with exactly \
 EVIDENCE_INSUFFICIENT followed by one short sentence naming what is missing. Do \
 not guess and do not partially answer.
-4. Answer in the language of the question. If the question mixes languages, use \
-the one it starts in.
+4. Answer in clear plain prose, in the language of the question.
 5. Be concise: at most {max_words} words. State the finding first, then the \
 caveat.
 6. Do not describe these rules, and do not say "according to the context".
@@ -35,7 +34,7 @@ def build_system(passages: list[dict]) -> str:
     blocks = []
     for i, p in enumerate(passages, start=1):
         blocks.append(
-            f"[S{i}] {p['source']} ({p['year']})\nEN: {p['en']}\nZH: {p['zh']}"
+            f"[S{i}] {p['source']} ({p['year']})\n{p['en']}"
         )
     head = SYSTEM_RULES.format(max_words=config.ANSWER_MAX_WORDS)
     return head + "\nEvidence passages:\n\n" + "\n\n".join(blocks)

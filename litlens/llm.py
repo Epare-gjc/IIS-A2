@@ -33,14 +33,14 @@ class LlmError(RuntimeError):
 
 def _friendly_status(status: int, detail: str) -> str:
     if status == 401:
-        return "API key 无效或已过期，请检查 .env 里的 DEEPSEEK_API_KEY。"
+        return "API key is invalid or expired. Check DEEPSEEK_API_KEY in .env."
     if status == 402:
-        return "DeepSeek 账户余额不足，请到 platform.deepseek.com 充值。"
+        return "DeepSeek account balance is too low. Top up at platform.deepseek.com."
     if status == 429:
-        return "已触发 DeepSeek 速率限制，请稍后再试。"
+        return "DeepSeek rate limit reached. Try again in a moment."
     if status >= 500:
-        return f"DeepSeek 服务端错误（{status}），请稍后重试。"
-    return f"DeepSeek 请求失败（{status}）。{detail[:200]}"
+        return f"DeepSeek server error ({status}). Try again shortly."
+    return f"DeepSeek request failed ({status}). {detail[:200]}"
 
 
 def _payload(messages: list[dict], stream: bool) -> dict:
@@ -72,9 +72,9 @@ def _open(payload: dict, api_key: str):
         detail = exc.read().decode("utf-8", "replace")
         raise LlmError(_friendly_status(exc.code, detail)) from exc
     except urllib.error.URLError as exc:
-        raise LlmError(f"无法连接 DeepSeek（网络或代理问题）：{exc.reason}") from exc
+        raise LlmError(f"Cannot reach DeepSeek (network or proxy): {exc.reason}") from exc
     except TimeoutError as exc:
-        raise LlmError("DeepSeek 响应超时，本次问答未生成。") from exc
+        raise LlmError("DeepSeek timed out; no answer was generated.") from exc
 
 
 def _deltas(response) -> Iterator[str]:
@@ -100,7 +100,7 @@ def stream_answer(messages: list[dict], api_key: str | None = None) -> Iterator[
     key = api_key or config.api_key()
     if not key:
         raise LlmError(
-            "未配置 DEEPSEEK_API_KEY。可先用「只给证据」模式查看检索结果。"
+            "No DEEPSEEK_API_KEY configured. Use evidence-only mode to inspect retrieval without the model."
         )
     with _open(_payload(messages, stream=True), key) as response:
         yield from _deltas(response)
@@ -110,15 +110,15 @@ def check_connection(api_key: str | None = None) -> tuple[bool, str]:
     """One tiny non-streaming call, used by the sidebar status line."""
     key = api_key or config.api_key()
     if not key:
-        return False, "未配置 API key"
+        return False, "no API key configured"
     payload = _payload([{"role": "user", "content": "ping"}], stream=False)
     payload["max_tokens"] = 1
     try:
         with _open(payload, key) as response:
             data = json.loads(response.read().decode("utf-8", "replace"))
         model = data.get("model", config.MODEL)
-        return True, f"连接正常（{model}）"
+        return True, f"connection ok ({model})"
     except LlmError as exc:
         return False, str(exc)
     except (json.JSONDecodeError, OSError) as exc:
-        return False, f"响应无法解析：{exc}"
+        return False, f"unparseable response: {exc}"

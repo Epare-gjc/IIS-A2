@@ -1,7 +1,7 @@
 """The whole interaction as one generator.
 
-Both interfaces (Streamlit app.py and the CLI scripts/ask.py) drive the same
-pipeline, so what the report says about behaviour is what both do:
+The Streamlit app is the only interface, and it drives the pipeline described
+below, so what the report says about behaviour is what the app does:
 
     question -> retrieve top-3 -> below MIN_SCORE? -> refuse and stop
              -> otherwise generate with those passages only

@@ -4,13 +4,11 @@ Deliberately dependency-free: the ranking a reader sees is the ranking they can
 reproduce with `python -m unittest`, and there is no second API to fail during
 the demo.
 
-Three choices are worth knowing about:
+Two choices are worth knowing about:
 
-* Chinese text is indexed as character bigrams, not single characters. Without
-  a segmenter, single characters are too common to discriminate (用, 户, 么
-  appear in almost every note) and they made off-topic Chinese questions score
-  as high as answerable ones.
-* Question words (什么, 怎么, 是否 ...) are stopworded in both languages.
+* Tokens are lower-cased word runs, lightly stemmed (a trailing "s" is dropped),
+  with question words stopworded. Short tokens are dropped because one and two
+  letter fragments carry no topic.
 * If the question names a paper or author, that source's notes are boosted. The
   corpus is small enough to register aliases by hand in data/corpus.json, and a
   named source is the strongest signal a reader can give.
@@ -23,9 +21,8 @@ import re
 from collections import Counter
 
 _WORD = re.compile(r"[a-z0-9]+")
-_CJK = re.compile(r"[\u4e00-\u9fff]+")
 
-EN_STOPWORDS = frozenset(
+STOPWORDS = frozenset(
     """a an the and or of to in on for with by as at from is are was were be been
     being this that these those it its their they we you your i not no do does did
     can could should would will may might must if then than so such about into over
@@ -33,15 +30,6 @@ EN_STOPWORDS = frozenset(
     any both each few more most other some only own same too very just also using
     use used""".split()
 )
-
-# Question words only. Content words such as 用户 stay, because they are what a
-# question is about even when they are frequent.
-ZH_STOPWORDS = frozenset(
-    """什么 怎么 如何 哪些 哪个 哪里 是否 可以 需要 请问 为什 么样 一下 这个 那个
-    有哪 有什 是什 么是""".split()
-)
-
-STOPWORDS = EN_STOPWORDS | ZH_STOPWORDS
 
 SOURCE_BOOST = 0.20
 
@@ -56,12 +44,9 @@ def tokenize(text: str) -> list[str]:
     text = (text or "").lower()
     tokens: list[str] = []
     for w in _WORD.findall(text):
-        if w in STOPWORDS or len(w) < 2:
+        if len(w) < 2 or w in STOPWORDS:
             continue
         tokens.append(_stem(w))
-    for run in _CJK.findall(text):
-        grams = [run] if len(run) == 1 else [run[i : i + 2] for i in range(len(run) - 1)]
-        tokens.extend(g for g in grams if g not in STOPWORDS)
     return tokens
 
 
